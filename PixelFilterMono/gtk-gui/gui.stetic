@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <stetic-interface>
   <configuration>
     <images-root-path>..</images-root-path>
   </configuration>
   <import>
-    <widget-library name="../bin/Debug/PixelFilterMono.exe" internal="true" />
+    <widget-library name="../bin/Release/PixelFilterMono.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="1040 768">
     <action-group name="Default">
@@ -163,6 +163,7 @@
           <widget class="Gtk.Toolbar" id="MainToolbar">
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
+            <property name="ButtonStyle">Icons</property>
             <node name="MainToolbar" type="Toolbar">
               <node type="Toolitem" action="OpenButton" />
               <node type="Toolitem" action="SaveButton" />
@@ -292,6 +293,7 @@
           <widget class="Gtk.Toolbar" id="FilterToolbar">
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
+            <property name="ButtonStyle">Icons</property>
             <node name="FilterToolbar" type="Toolbar">
               <node type="Toolitem" action="AddFilterButton" />
             </node>
@@ -338,6 +340,7 @@
           <widget class="Gtk.Toolbar" id="QueueToolbar">
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
+            <property name="ButtonStyle">Icons</property>
             <node name="QueueToolbar" type="Toolbar">
               <node type="Toolitem" action="ApplyFiltersButton" />
               <node type="Toolitem" action="FilterUpButton" />
@@ -347,7 +350,7 @@
             </node>
           </widget>
           <packing>
-            <property name="X">415</property>
+            <property name="X">326</property>
             <property name="Y">630</property>
           </packing>
         </child>

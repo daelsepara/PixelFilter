@@ -172,6 +172,7 @@ public partial class MainWindow
 		this.MainToolbar = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/MainToolbar")));
 		this.MainToolbar.Name = "MainToolbar";
 		this.MainToolbar.ShowArrow = false;
+		this.MainToolbar.ToolbarStyle = ((global::Gtk.ToolbarStyle)(0));
 		this.MainLayout.Add(this.MainToolbar);
 		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.MainToolbar]));
 		w7.X = 70;
@@ -270,6 +271,7 @@ public partial class MainWindow
 		this.FilterToolbar = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/FilterToolbar")));
 		this.FilterToolbar.Name = "FilterToolbar";
 		this.FilterToolbar.ShowArrow = false;
+		this.FilterToolbar.ToolbarStyle = ((global::Gtk.ToolbarStyle)(0));
 		this.MainLayout.Add(this.FilterToolbar);
 		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.FilterToolbar]));
 		w18.X = 250;
@@ -305,9 +307,10 @@ public partial class MainWindow
 		this.QueueToolbar = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/QueueToolbar")));
 		this.QueueToolbar.Name = "QueueToolbar";
 		this.QueueToolbar.ShowArrow = false;
+		this.QueueToolbar.ToolbarStyle = ((global::Gtk.ToolbarStyle)(0));
 		this.MainLayout.Add(this.QueueToolbar);
 		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.QueueToolbar]));
-		w22.X = 415;
+		w22.X = 326;
 		w22.Y = 630;
 		this.Add(this.MainLayout);
 		if ((this.Child != null))
