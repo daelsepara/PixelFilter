@@ -68,7 +68,8 @@ public partial class MainWindow : Gtk.Window
 		ImageSaver.AddFilter(AddFilter("jpg", "*.jpg", "*.jpeg"));
 		ImageSaver.AddFilter(AddFilter("tif", "*.tif", "*.tiff"));
 		ImageSaver.AddFilter(AddFilter("bmp", "*.bmp"));
-
+		ImageSaver.AddFilter(AddFilter("ico", "*.ico"));
+      
 		ImageLoader.AddFilter(AddFilter("Image files (png/jpg/jpeg/tif/tiff/bmp/gif/ico/xpm/icns/pgm)", "*.png", "*.jpg", "*.jpeg", "*.tif", "*.tiff", "*.bmp", "*.gif", "*.ico", "*.xpm", "*.icns", "*.pgm"));
 
 		Confirm = new Dialog(
