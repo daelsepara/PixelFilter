@@ -39,6 +39,7 @@ public static class Filters
 		AddFilter("supereagle", "Scale", new int[] { 2 });
 		AddFilter("supersai", "Scale", new int[] { 2 });
 		AddFilter("tv", "Scale", new int[] { 1, 2, 3, 4 });
+		AddFilter("tvzero", "Scanlines", new int[] { 2, 3, 4 });
 		AddFilter("ultra2x", "Scale", new int[] { 2 });
 		AddFilter("vertscan", "Scale", new int[] { 1, 2, 3, 4 });
 		AddFilter("xbr", "Scale", new int[] { 2, 3, 4 });
