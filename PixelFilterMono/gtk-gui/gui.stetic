@@ -172,7 +172,7 @@
           </widget>
           <packing>
             <property name="X">70</property>
-            <property name="Y">10</property>
+            <property name="Y">20</property>
           </packing>
         </child>
         <child>
@@ -300,7 +300,7 @@
           </widget>
           <packing>
             <property name="X">250</property>
-            <property name="Y">630</property>
+            <property name="Y">635</property>
           </packing>
         </child>
         <child>
@@ -351,7 +351,7 @@
           </widget>
           <packing>
             <property name="X">326</property>
-            <property name="Y">630</property>
+            <property name="Y">635</property>
           </packing>
         </child>
       </widget>

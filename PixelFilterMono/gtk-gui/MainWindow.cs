@@ -176,7 +176,7 @@ public partial class MainWindow
 		this.MainLayout.Add(this.MainToolbar);
 		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.MainToolbar]));
 		w7.X = 70;
-		w7.Y = 10;
+		w7.Y = 20;
 		// Container child MainLayout.Gtk.Fixed+FixedChild
 		this.InputImage = new global::Gtk.Image();
 		this.InputImage.WidthRequest = 256;
@@ -275,7 +275,7 @@ public partial class MainWindow
 		this.MainLayout.Add(this.FilterToolbar);
 		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.FilterToolbar]));
 		w18.X = 250;
-		w18.Y = 630;
+		w18.Y = 635;
 		// Container child MainLayout.Gtk.Fixed+FixedChild
 		this.FilterQueueWindow = new global::Gtk.ScrolledWindow();
 		this.FilterQueueWindow.WidthRequest = 356;
@@ -311,7 +311,7 @@ public partial class MainWindow
 		this.MainLayout.Add(this.QueueToolbar);
 		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.MainLayout[this.QueueToolbar]));
 		w22.X = 326;
-		w22.Y = 630;
+		w22.Y = 635;
 		this.Add(this.MainLayout);
 		if ((this.Child != null))
 		{
