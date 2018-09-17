@@ -2,6 +2,7 @@ using Gdk;
 using Gtk;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 public partial class MainWindow : Gtk.Window
@@ -14,6 +15,8 @@ public partial class MainWindow : Gtk.Window
 	TextIter start, end;
 
 	List<FilterApplication> FilterQueue = new List<FilterApplication>();
+
+	CultureInfo ci = new CultureInfo("en-us");
 
 	public MainWindow() : base(Gtk.WindowType.Toplevel)
 	{
@@ -33,6 +36,7 @@ public partial class MainWindow : Gtk.Window
 
 		return filter;
 	}
+	
 	protected void InitializeUserInterface()
 	{
 		Title = "Pixel Filter in Mono/C# GTK";
@@ -237,6 +241,8 @@ public partial class MainWindow : Gtk.Window
 						ResetInputScrollBars();
 
 						RenderInput();
+
+						LabelInput.LabelProp = String.Format(ci, "<b>Input ({0}x{1})</b>", InputPixbuf.Width, InputPixbuf.Height);
 					}
 
 					Common.Free(temp);
@@ -677,6 +683,8 @@ public partial class MainWindow : Gtk.Window
 				ResetOutputScrollBars();
 
 				RenderOutput();
+
+				LabelOutput.LabelProp = String.Format(ci, "<b>Output ({0}x{1})</b>", OutputPixbuf.Width, OutputPixbuf.Height);
 			}
 
 			Common.Free(temp);
