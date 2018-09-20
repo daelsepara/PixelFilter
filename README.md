@@ -56,3 +56,7 @@ Various filters can be combined into a queue. Filters on the queue can be re-arr
 # Image formats
 
 You can load PNG, XPM, GIF, JPG, BMP, ICO, TIFF, ICNS, and PGM files while only you can only save the image in PNG, JPG, BMP, ICO, and TIFF formats.
+
+# Platform
+
+PixelFilter software has been tested on Linux and OSX platforms. On Linux platforms, please place the share libraries inside the folder where the main executable is located.
