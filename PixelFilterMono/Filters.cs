@@ -22,6 +22,7 @@ public static class Filters
 		AddFilter("epxb", "Scale", new int[] { 2 });
 		AddFilter("epxc", "Scale", new int[] { 2 });
 		AddFilter("flip", "Flip (Horizonal/Vertical)", new int[] { 0, 1 });
+		AddFilter("gs", "Iterations", new int[] { 10, 50, 100, 500, 1000 });
 		AddFilter("horiz", "Scale", new int[] { 1, 2, 3, 4 });
 		AddFilter("hq2xn", "Scale", new int[] { 2, 3, 4 });
 		AddFilter("hqx", "Scale", new int[] { 2, 3, 4 });
