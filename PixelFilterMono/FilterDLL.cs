@@ -30,7 +30,7 @@ public static class FilterDLL
 
 	unsafe public static Pixbuf ApplyFilter(string dll, Pixbuf input, int scale, bool threshold)
 	{
-		IntPtr pLibrary = Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll));
+		IntPtr pLibrary = Common.OSTest.IsWindows() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dll", dll)) : (Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll)));
 
 		IntPtr pSizeX = DLLLoader.GetProcAddress(pLibrary, "SizeX");
 		IntPtr pSizeY = DLLLoader.GetProcAddress(pLibrary, "SizeY");
@@ -83,7 +83,7 @@ public static class FilterDLL
 
 	unsafe public static string GetName(string dll)
 	{
-		IntPtr pLibrary = Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll));
+		IntPtr pLibrary = Common.OSTest.IsWindows() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dll", dll)) : (Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll)));
 
 		IntPtr pName = DLLLoader.GetProcAddress(pLibrary, "Name");
 
@@ -98,7 +98,7 @@ public static class FilterDLL
 
 	unsafe public static string GetDescription(string dll)
 	{
-		IntPtr pLibrary = Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll));
+		IntPtr pLibrary = Common.OSTest.IsWindows() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dll", dll)) : (Common.OSTest.IsRunningOnMac() ? DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.dylib", dll)) : DLLLoader.LoadLibrary(String.Format("./libpixel++{0}.so", dll)));
 
 		IntPtr pDescription = DLLLoader.GetProcAddress(pLibrary, "Description");
 

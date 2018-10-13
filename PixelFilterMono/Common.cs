@@ -10,6 +10,24 @@ public static class Common
 		[DllImport("libc", EntryPoint = "uname")]
 		static extern int Uname(IntPtr buf);
 
+		public static bool IsWindows()
+		{
+			var isWindows = false;
+
+			switch (Environment.OSVersion.Platform)
+			{
+				case PlatformID.Win32NT:
+				case PlatformID.Win32S:
+				case PlatformID.Win32Windows:
+				case PlatformID.WinCE:
+					isWindows = true;
+
+					break;
+			}
+
+			return isWindows;
+		}
+
 		public static bool IsRunningOnMac()
 		{
 			IntPtr buf = IntPtr.Zero;
