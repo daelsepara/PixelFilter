@@ -4,126 +4,126 @@ using System.Runtime.InteropServices;
 
 public static class Common
 {
-	// see: https://github.com/jpobst/Pinta/blob/1.6/Pinta.Core/Managers/SystemManager.cs#L125
-	public static class OSTest
-	{
-		[DllImport("libc", EntryPoint = "uname")]
-		static extern int Uname(IntPtr buf);
+    // see: https://github.com/jpobst/Pinta/blob/1.6/Pinta.Core/Managers/SystemManager.cs#L125
+    public static class OSTest
+    {
+        [DllImport("libc", EntryPoint = "uname")]
+        static extern int Uname(IntPtr buf);
 
-		public static bool IsWindows()
-		{
-			var isWindows = false;
+        public static bool IsWindows()
+        {
+            var isWindows = false;
 
-			switch (Environment.OSVersion.Platform)
-			{
-				case PlatformID.Win32NT:
-				case PlatformID.Win32S:
-				case PlatformID.Win32Windows:
-				case PlatformID.WinCE:
-					isWindows = true;
+            switch (Environment.OSVersion.Platform)
+            {
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
+                    isWindows = true;
 
-					break;
-			}
+                    break;
+            }
 
-			return isWindows;
-		}
+            return isWindows;
+        }
 
-		public static bool IsRunningOnMac()
-		{
-			IntPtr buf = IntPtr.Zero;
-			try
-			{
-				buf = Marshal.AllocHGlobal(8192);
-				// This is a hacktastic way of getting sysname from uname ()
-				if (Uname(buf) == 0)
-				{
-					string os = Marshal.PtrToStringAnsi(buf);
+        public static bool IsRunningOnMac()
+        {
+            IntPtr buf = IntPtr.Zero;
+            try
+            {
+                buf = Marshal.AllocHGlobal(8192);
+                // This is a hacktastic way of getting sysname from uname ()
+                if (Uname(buf) == 0)
+                {
+                    string os = Marshal.PtrToStringAnsi(buf);
 
-					if (os == "Darwin")
-						return true;
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("Error: {0}", ex.Message);
-			}
-			finally
-			{
-				if (buf != IntPtr.Zero)
-					Marshal.FreeHGlobal(buf);
-			}
+                    if (os == "Darwin")
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+            finally
+            {
+                if (buf != IntPtr.Zero)
+                    Marshal.FreeHGlobal(buf);
+            }
 
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 
-	public static Pixbuf InitializePixbuf(int width, int height)
-	{
-		var pixbuf = new Pixbuf(Colorspace.Rgb, false, 8, width, height);
+    public static Pixbuf InitializePixbuf(int width, int height)
+    {
+        var pixbuf = new Pixbuf(Colorspace.Rgb, false, 8, width, height);
 
-		pixbuf.Fill(0);
+        pixbuf.Fill(0);
 
-		return pixbuf;
-	}
+        return pixbuf;
+    }
 
-	unsafe public static byte* PreparePixbuf(Pixbuf input)
-	{
-		var temp = (byte*)Marshal.AllocHGlobal(input.Width * input.Height * input.NChannels);
+    unsafe public static byte* PreparePixbuf(Pixbuf input)
+    {
+        var temp = (byte*)Marshal.AllocHGlobal(input.Width * input.Height * input.NChannels);
 
-		for (var y = 0; y < input.Height; y++)
-		{
-			for (var x = 0; x < input.Width; x++)
-			{
-				var ptr = input.Pixels + y * input.Rowstride + x * input.NChannels;
+        for (var y = 0; y < input.Height; y++)
+        {
+            for (var x = 0; x < input.Width; x++)
+            {
+                var ptr = input.Pixels + y * input.Rowstride + x * input.NChannels;
 
-				for (var offset = 0; offset < input.NChannels; offset++)
-				{
-					temp[(y * input.Width + x) * input.NChannels + offset] = Marshal.ReadByte(ptr, offset);
-				}
-			}
-		}
+                for (var offset = 0; offset < input.NChannels; offset++)
+                {
+                    temp[(y * input.Width + x) * input.NChannels + offset] = Marshal.ReadByte(ptr, offset);
+                }
+            }
+        }
 
-		return temp;
-	}
+        return temp;
+    }
 
-	unsafe public static void Copy(Pixbuf dst, byte* src)
-	{
-		if (dst != null)
-		{
-			for (var y = 0; y < dst.Height; y++)
-			{
-				for (var x = 0; x < dst.Width; x++)
-				{
-					var ptr = dst.Pixels + y * dst.Rowstride + x * dst.NChannels;
+    unsafe public static void Copy(Pixbuf dst, byte* src)
+    {
+        if (dst != null)
+        {
+            for (var y = 0; y < dst.Height; y++)
+            {
+                for (var x = 0; x < dst.Width; x++)
+                {
+                    var ptr = dst.Pixels + y * dst.Rowstride + x * dst.NChannels;
 
-					for (var offset = 0; offset < dst.NChannels; offset++)
-					{
-						Marshal.WriteByte(ptr, offset, src[(y * dst.Width + x) * dst.NChannels + offset]);
-					}
-				}
-			}
-		}
-	}
+                    for (var offset = 0; offset < dst.NChannels; offset++)
+                    {
+                        Marshal.WriteByte(ptr, offset, src[(y * dst.Width + x) * dst.NChannels + offset]);
+                    }
+                }
+            }
+        }
+    }
 
-	public static void Free(params IDisposable[] trash)
-	{
-		foreach (var item in trash)
-		{
-			if (item != null)
-			{
-				item.Dispose();
-			}
-		}
-	}
+    public static void Free(params IDisposable[] trash)
+    {
+        foreach (var item in trash)
+        {
+            if (item != null)
+            {
+                item.Dispose();
+            }
+        }
+    }
 
-	unsafe public static void Free(params byte*[] trash)
-	{
-		foreach (var item in trash)
-		{
-			if (item != null)
-			{
-				Marshal.FreeHGlobal((IntPtr)item);
-			}
-		}
-	}
+    unsafe public static void Free(params byte*[] trash)
+    {
+        foreach (var item in trash)
+        {
+            if (item != null)
+            {
+                Marshal.FreeHGlobal((IntPtr)item);
+            }
+        }
+    }
 }
