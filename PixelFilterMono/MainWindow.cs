@@ -148,20 +148,20 @@ public partial class MainWindow : Gtk.Window
 
         if (InputScrollX.Sensitive)
         {
-            InputScrollX.SetRange(0.0, InputPixbuf.Width - Parameters.WindowX);
+            InputScrollX.SetRange(0, InputPixbuf.Width - Parameters.WindowX);
         }
         else
         {
-            InputScrollX.SetRange(0.0, Parameters.WindowX);
+            InputScrollX.SetRange(0, Parameters.WindowX);
         }
 
         if (InputScrollY.Sensitive)
         {
-            InputScrollY.SetRange(0.0, InputPixbuf.Height - Parameters.WindowY);
+            InputScrollY.SetRange(0, InputPixbuf.Height - Parameters.WindowY);
         }
         else
         {
-            InputScrollY.SetRange(0.0, Parameters.WindowY);
+            InputScrollY.SetRange(0, Parameters.WindowY);
         }
 
         Parameters.InputX = 0;
@@ -181,20 +181,20 @@ public partial class MainWindow : Gtk.Window
 
         if (OutputScrollX.Sensitive)
         {
-            OutputScrollX.SetRange(0.0, OutputPixbuf.Width - Parameters.WindowX);
+            OutputScrollX.SetRange(0, OutputPixbuf.Width - Parameters.WindowX);
         }
         else
         {
-            OutputScrollX.SetRange(0.0, Parameters.WindowX);
+            OutputScrollX.SetRange(0, Parameters.WindowX);
         }
 
         if (OutputScrollY.Sensitive)
         {
-            OutputScrollY.SetRange(0.0, OutputPixbuf.Height - Parameters.WindowY);
+            OutputScrollY.SetRange(0, OutputPixbuf.Height - Parameters.WindowY);
         }
         else
         {
-            OutputScrollY.SetRange(0.0, Parameters.WindowY);
+            OutputScrollY.SetRange(0, Parameters.WindowY);
         }
 
         Parameters.OutputX = 0;
