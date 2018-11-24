@@ -45,64 +45,31 @@ class DLLLoader
 
     public static IntPtr LoadLibrary(string libname)
     {
-        if (Common.OSTest.IsWindows())
-        {
-            return Windows.DLOpen(libname);
-        }
-
-        if (Common.OSTest.IsRunningOnMac())
-        {
-            return OSX.DLOpen(libname, RTLD_GLOBAL | RTLD_LAZY);
-        }
-
-        return Linux.DLOpen(libname, RTLD_GLOBAL | RTLD_LAZY);
+        return Common.OSTest.IsWindows()
+            ? Windows.DLOpen(libname)
+            : Common.OSTest.IsRunningOnMac() ? OSX.DLOpen(libname, RTLD_GLOBAL | RTLD_LAZY) : Linux.DLOpen(libname, RTLD_GLOBAL | RTLD_LAZY);
     }
 
     public static IntPtr GetProcAddress(IntPtr library, string function)
     {
         var ret = IntPtr.Zero;
 
-        if (Common.OSTest.IsWindows())
-        {
-            ret = Windows.DLSym(library, function);
-        }
-        else
-        {
-            if (Common.OSTest.IsRunningOnMac())
-            {
-                ret = OSX.DLSym(library, function);
-            }
-            else
-            {
-                ret = Linux.DLSym(library, function);
-            }
-        }
+        ret = Common.OSTest.IsWindows()
+            ? Windows.DLSym(library, function)
+            : Common.OSTest.IsRunningOnMac() ? OSX.DLSym(library, function) : Linux.DLSym(library, function);
 
         return ret;
     }
 
     public static T LoadFunction<T>(IntPtr procaddress)
     {
-        if (procaddress == IntPtr.Zero)
-            return default(T);
-
-        return Marshal.GetDelegateForFunctionPointer<T>(procaddress);
+        return procaddress == IntPtr.Zero ? default(T) : Marshal.GetDelegateForFunctionPointer<T>(procaddress);
     }
 
     public static int FreeLibrary(IntPtr handle)
     {
-        if (Common.OSTest.IsWindows())
-        {
-            var code = Windows.DLClose(handle);
-
-            return code ? 0 : 1;
-        }
-
-        if (Common.OSTest.IsRunningOnMac())
-        {
-            return OSX.DLClose(handle);
-        }
-
-        return Linux.DLClose(handle);
+        return Common.OSTest.IsWindows()
+            ? Windows.DLClose(handle) ? 0 : 1
+            : Common.OSTest.IsRunningOnMac() ? OSX.DLClose(handle) : Linux.DLClose(handle);
     }
 }
