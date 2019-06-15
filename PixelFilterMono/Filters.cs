@@ -31,6 +31,7 @@ public static class Filters
         AddFilter("lqx", "Scale", new int[] { 2, 3, 4 });
         AddFilter("magnify", "Magnification", new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         AddFilter("nearest", "Scale", new int[] { 2 });
+        AddFilter("omniscale", "Scale", new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         AddFilter("reverseaa", "Scale", new int[] { 2 });
         AddFilter("rgb", "Scale", new int[] { 1, 2, 3, 4 });
         AddFilter("rotate", "Rotation Angle (90, 180, 270)", new int[] { 0, 1, 2 });
