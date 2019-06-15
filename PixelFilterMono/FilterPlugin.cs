@@ -10,7 +10,7 @@ public class FilterApplication
     public bool Threshold;
     public string Library;
 
-    public FilterApplication(string name, string library, Func<string, Pixbuf, int, bool, Pixbuf> apply, int parameter, bool threshold)
+    public FilterApplication(string name, string library, Func<string, Pixbuf, int, bool, Pixbuf> apply, int parameter, bool threshold = false)
     {
         Name = String.Format("{0}: ({1})", name, parameter.ToString());
         Library = library;

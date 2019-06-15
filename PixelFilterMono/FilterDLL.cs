@@ -61,8 +61,6 @@ public static class FilterDLL
         Parameters[2] = &targety;
         Parameters[3] = &scale;
 
-        Threshold(threshold);
-
         Apply(4, Parameters);
 
         filtered = Image();

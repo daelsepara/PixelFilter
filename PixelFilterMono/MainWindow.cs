@@ -534,7 +534,7 @@ public partial class MainWindow : Gtk.Window
 
             if (param >= 0 && param < item.FilterParameters.Count)
             {
-                FilterQueue.Add(new FilterApplication(item.Name, item.Library, item.Apply, item.FilterParameters[param], true));
+                FilterQueue.Add(new FilterApplication(item.Name, item.Library, item.Apply, item.FilterParameters[param]));
 
                 UpdateFilterQueue(FilterQueue);
             }
