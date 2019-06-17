@@ -27,6 +27,7 @@ public static class Filters
         AddFilter("hq2xn", "Scale", new int[] { 2, 3, 4 });
         AddFilter("hqx", "Scale", new int[] { 2, 3, 4 });
         AddFilter("kuwahara", "Window", new int[] { 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25 });
+        AddFilter("lanczos", "Scale", new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         AddFilter("lq2xn", "Scale", new int[] { 2, 3, 4 });
         AddFilter("lqx", "Scale", new int[] { 2, 3, 4 });
         AddFilter("magnify", "Magnification", new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
